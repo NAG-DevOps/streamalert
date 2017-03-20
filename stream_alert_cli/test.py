@@ -182,7 +182,7 @@ def apply_helpers(test_record):
 
     find_and_apply_helpers(test_record)
 
-def test_alert_rules():
+def test_rule_processor():
     """Integration test the 'Alert' Lambda function with various record types"""
     # Start the mock_s3 instance here so we can test with mocked objects project-wide
     BOTO_MOCKER.start()
@@ -257,9 +257,9 @@ def stream_alert_test(options):
     else:
         LOGGER_SA.setLevel(logging.INFO)
 
-    if options.func == 'alert':
-        test_alert_rules()
+    if options.processor == 'rule':
+        test_rule_processor()
 
-    elif options.func == 'output':
+    elif options.processor == 'alert':
         # TODO(jack) test output
         raise NotImplementedError
