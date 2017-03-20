@@ -126,8 +126,6 @@ def terraform_runner(options):
         # create all remainder infrastructure
         LOGGER_CLI.info('Building Remainder Infrastructure')
         tf_runner()
-        # refresh config to get modified variables
-        # refresh_config()
 
     # destroy all infrastructure
     elif options.subcommand == 'destroy':
@@ -365,6 +363,5 @@ def deploy(options):
     # TODO(jack) write integration test to verify newly updated function
 
     # create production version by running a second time
-    print packages
     publish_version(packages)
     tf_runner(targets=targets)
